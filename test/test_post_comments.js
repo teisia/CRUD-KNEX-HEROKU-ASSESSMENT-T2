@@ -86,7 +86,7 @@ describe('Post Comments CRUD Routes', function() {
         });
       })
     });
-    xit('should UPDATE a post comment to /posts/:post_id/comments/:id', function(done) {
+    it('should UPDATE a post comment to /posts/:post_id/comments/:id', function(done) {
       chai.request(server)
         .get('/posts').end(function (err, res) {
           var thePost = res.body.SUCCESS[1];
@@ -104,7 +104,7 @@ describe('Post Comments CRUD Routes', function() {
           })
         })
     });
-    xit('should DELETE a post comment to /posts/:post_id/comments/:id/delete', function(done) {
+    it('should DELETE a post comment to /posts/:post_id/comments/:id/delete', function(done) {
       chai.request(server)
         .get('/posts').end(function (err, res) {
           var thePost = res.body.SUCCESS[1];
