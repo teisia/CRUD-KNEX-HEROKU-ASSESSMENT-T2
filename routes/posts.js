@@ -18,4 +18,10 @@ router.post('/', function(req, res, next) {
   })
 });
 
+router.get('/:id', function(req, res, next) {
+  Posts().where('id', req.params.id).first().then(function (posts) {
+    res.json({'SUCCESS': posts});
+  })
+});
+
 module.exports = router;

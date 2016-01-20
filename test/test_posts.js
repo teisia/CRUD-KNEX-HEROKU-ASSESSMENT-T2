@@ -37,7 +37,7 @@ describe('Posts CRUD Routes', function() {
         done();
       });
     });
-  xit('should GET a SINGLE post from /posts/:id', function(done) {
+  it('should GET a SINGLE post from /posts/:id', function(done) {
     chai.request(server)
       .get('/posts')
       .end(function (err, res) {
