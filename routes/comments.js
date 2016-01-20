@@ -12,7 +12,7 @@ function Comments() {
 
 router.get('/:post_id/comments', function(req, res) {
   Comments().where('post_id', req.params.post_id).then(function (comments) {
-    res.json({'SUCCESS': 'This is the comments page'});
+    res.json({'SUCCESS': comments});
   })
 });
 
@@ -23,22 +23,22 @@ var newComment = {
   body: req.body.body
 }
   Comments().insert(newComment).then(function (comment) {
-    res.redirect('/'+req.params.post_id+'/comments');
+    res.redirect('/posts/'+req.params.post_id+'/comments');
   })
 });
 
 router.get('/:post_id/comments/:comment_id', function(req, res) {
-  Comments().where('post_id', req.params.post_id).first().then(function (post) {
-    Comments().where('id', req.params.comment_id).then(function (comment) {
-      res.json({'SUCCESS': 'This is the individual comment page'});
+  Comments().where('post_id', req.params.post_id).first().then(function (comment) {
+    Comments().where('id', req.params.comment_id).then(function (comments) {
+      res.json({'SUCCESS': comment});
     })
   })
 });
 
 router.get('/:post_id/comments/:comment_id/edit', function(req, res) {
-  Comments().where('post_id', req.params.post_id).first().then(function (post) {
-    Comments().where('id', req.params.comment_id).then(function (comment) {
-      res.json({'SUCCESS': 'This is the edit comments page'});
+  Comments().where('post_id', req.params.post_id).first().then(function (comment) {
+    Comments().where('id', req.params.comment_id).then(function (comments) {
+      res.json({'SUCCESS': comment});
     })
   })
 });
@@ -46,7 +46,7 @@ router.get('/:post_id/comments/:comment_id/edit', function(req, res) {
 router.post('/:post_id/comments/:comment_id', function(req, res) {
   Comments().where('post_id', req.params.post_id).first().then(function (post) {
     Comments().where('id', req.params.comment_id).then(function (comment) {
-      res.redirect('/'+req.params.post_id+'/comments');
+      res.redirect('/posts/'+req.params.post_id+'/comments');
     })
   })
 });
@@ -54,7 +54,7 @@ router.post('/:post_id/comments/:comment_id', function(req, res) {
 router.post('/:post_id/comments/:comment_id/delete', function(req, res) {
   Comments().where('post_id', req.params.post_id).first().then(function (post) {
     Comments().where('id', req.params.comment_id).del().then(function (comment) {
-      res.redirect('/'+req.params.post_id+'/comments');
+      res.redirect('/posts/'+req.params.post_id+'/comments');
     })
   })
 });
