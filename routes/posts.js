@@ -30,7 +30,7 @@ router.get('/:id', function(req, res, next) {
 
 router.get('/:id/edit', function(req, res, next) {
   Posts().where('id', req.params.id).first().then(function (posts) {
-    res.json({'SUCCESS': 'This is the edit page'});
+    res.json({'SUCCESS': 'This is the edit posts page'});
   })
 });
 

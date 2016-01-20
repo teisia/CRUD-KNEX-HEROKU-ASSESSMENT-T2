@@ -35,4 +35,14 @@ router.get('/:post_id/comments/:comment_id', function(req, res, next) {
   })
 });
 
+router.get('/:post_id/comments/:comment_id/edit', function(req, res, next) {
+  Comments().where('post_id', req.params.post_id).first().then(function (post) {
+    Comments().where('id', req.params.comment_id).then(function (comment) {
+    res.json({'SUCCESS': 'This is the edit comments page'});
+    })
+  })
+});
+
+
+
 module.exports = router;
