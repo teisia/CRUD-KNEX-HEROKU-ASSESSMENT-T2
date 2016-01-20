@@ -10,13 +10,13 @@ function Comments() {
   return knex('comments');
 }
 
-router.get('/:post_id/comments', function(req, res, next) {
+router.get('/:post_id/comments', function(req, res) {
   Comments().where('post_id', req.params.post_id).then(function (comments) {
     res.json({'SUCCESS': 'This is the comments page'});
   })
 });
 
-router.post('/:post_id/comments', function(req, res, next) {
+router.post('/:post_id/comments', function(req, res) {
 var newComment = {
   post_id: req.params.post_id,
   commenter: req.params.commenter,
@@ -27,22 +27,29 @@ var newComment = {
   })
 });
 
-router.get('/:post_id/comments/:comment_id', function(req, res, next) {
+router.get('/:post_id/comments/:comment_id', function(req, res) {
   Comments().where('post_id', req.params.post_id).first().then(function (post) {
     Comments().where('id', req.params.comment_id).then(function (comment) {
-    res.json({'SUCCESS': 'This is the individual comment page'});
+      res.json({'SUCCESS': 'This is the individual comment page'});
     })
   })
 });
 
-router.get('/:post_id/comments/:comment_id/edit', function(req, res, next) {
+router.get('/:post_id/comments/:comment_id/edit', function(req, res) {
   Comments().where('post_id', req.params.post_id).first().then(function (post) {
     Comments().where('id', req.params.comment_id).then(function (comment) {
-    res.json({'SUCCESS': 'This is the edit comments page'});
+      res.json({'SUCCESS': 'This is the edit comments page'});
     })
   })
 });
 
+router.post('/:post_id/comments/:comment_id', function(req, res) {
+  Comments().where('post_id', req.params.post_id).first().then(function (post) {
+    Comments().where('id', req.params.comment_id).then(function (comment) {
+      res.redirect('/'+req.params.post_id+'/comments');
+    })
+  })
+});
 
 
 module.exports = router;

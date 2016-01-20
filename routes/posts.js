@@ -22,13 +22,13 @@ var newPost = {
   })
 });
 
-router.get('/:id', function(req, res, next) {
+router.get('/:id', function(req, res) {
   Posts().where('id', req.params.id).first().then(function (post) {
     res.json({'SUCCESS': post});
   })
 });
 
-router.get('/:id/edit', function(req, res, next) {
+router.get('/:id/edit', function(req, res) {
   Posts().where('id', req.params.id).first().then(function (posts) {
     res.json({'SUCCESS': 'This is the edit posts page'});
   })
@@ -36,13 +36,13 @@ router.get('/:id/edit', function(req, res, next) {
 
 router.post('/:id', function(req, res) {
   Posts().where('id', req.params.id).update(req.body).then(function (posts) {
-  res.redirect('/');
+    res.redirect('/');
   })
 });
 
-router.post('/:id/delete', function(req, res, next) {
+router.post('/:id/delete', function(req, res) {
   Posts().where('id', req.params.id).del().then(function (posts) {
-  res.redirect('/');
+    res.redirect('/');
   })
 });
 
