@@ -53,7 +53,7 @@ describe('Posts CRUD Routes', function() {
       })
     });
 
-    xit('should GET edit route /posts/:id/edit', function (done) {
+    it('should GET edit route /posts/:id/edit', function (done) {
       chai.request(server)
       .get('/posts/3/edit')
       .end(function(err, res){
