@@ -71,3 +71,5 @@ body
 After passing all tests, deploy the app to Heroku and use migrations to create your production schema.
 
 Add the url to your deployed site to this readme and submit a pull request.
+
+https://teisia-crud-knex-assessment-t2.herokuapp.com
