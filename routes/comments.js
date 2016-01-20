@@ -53,10 +53,10 @@ router.post('/:post_id/comments/:comment_id', function(req, res) {
 
 router.post('/:post_id/comments/:comment_id/delete', function(req, res) {
   Comments().where('post_id', req.params.post_id).first().then(function (post) {
-    Comments().where('id', req.params.comment_id).then(function (comment) {
+    Comments().where('id', req.params.comment_id).del().then(function (comment) {
       res.redirect('/'+req.params.post_id+'/comments');
     })
-  })
+  })F
 });
 
 
