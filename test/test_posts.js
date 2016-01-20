@@ -61,7 +61,7 @@ describe('Posts CRUD Routes', function() {
         done();
       });
     });
-    xit('should UPDATE a SINGLE post to /posts/:id', function(done) {
+    it('should UPDATE a SINGLE post to /posts/:id', function(done) {
       chai.request(server)
         .get('/posts')
         .end(function (err, res) {

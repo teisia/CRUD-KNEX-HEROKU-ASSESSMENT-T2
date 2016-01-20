@@ -34,4 +34,10 @@ router.get('/:id/edit', function(req, res, next) {
   })
 });
 
+router.post('/:id', function(req, res) {
+  Posts().where('id', req.params.id).update(req.body).then(function (posts) {
+  res.redirect('/');
+  })
+});
+
 module.exports = router;
