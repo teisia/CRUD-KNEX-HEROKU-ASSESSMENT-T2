@@ -23,7 +23,7 @@ describe('Posts CRUD Routes', function() {
       done();
     });
   });
-  xit('should POST a SINGLE post to /posts', function(done) {
+  it('should POST a SINGLE post to /posts', function(done) {
     var thePost = {
       'author': 'J.D Salinger',
       'body': 'I like it when somebody gets ecited about something. It\'s nice.'

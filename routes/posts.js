@@ -12,4 +12,10 @@ router.get('/', function(req, res, next) {
   })
 });
 
+router.post('/', function(req, res, next) {
+  Posts().insert(req.body).then(function (posts) {
+    res.redirect('/');
+  })
+});
+
 module.exports = router;
