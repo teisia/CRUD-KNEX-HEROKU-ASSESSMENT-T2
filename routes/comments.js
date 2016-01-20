@@ -16,4 +16,15 @@ router.get('/:post_id/comments', function(req, res, next) {
   })
 });
 
+router.post('/:post_id/comments', function(req, res, next) {
+var newComment = {
+  post_id: req.params.post_id,
+  commenter: req.params.commenter,
+  body: req.body.body
+}
+  Comments().insert(newComment).then(function (comment) {
+    res.redirect('/'+req.params.post_id+'/comments');
+  })
+});
+
 module.exports = router;
